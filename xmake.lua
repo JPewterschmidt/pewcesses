@@ -15,7 +15,8 @@ target("pewcesses")
     set_warnings("all", "error")
     add_files("src/*.cc")
     add_includedirs(
-        "include"
+        "include", 
+        "toolpex/include"
     )
 
 target("example")
@@ -23,7 +24,8 @@ target("example")
     add_deps("pewcesses")
     add_files("example/*.cc")
     add_includedirs(
-        "include"
+        "include", 
+        "toolpex/include"
     )
 
 target("test")
@@ -34,7 +36,10 @@ target("test")
     add_packages(
         "gtest", "fmt"
     )
-    add_includedirs( "include")
+    add_includedirs(
+        "include", 
+        "toolpex/include"
+    )
     after_build(function (target)
         os.exec(target:targetfile())
         print("xmake: unittest complete.")
